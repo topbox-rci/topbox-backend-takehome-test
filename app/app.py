@@ -39,4 +39,5 @@ def engagements_by_id(engagement_id):
 
 @app.route('/interactions')
 def interactions():
+    # TODO: Modify this endpoint according to problem statement!
     return json_util.dumps(db.interactions.find({}))

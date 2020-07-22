@@ -83,7 +83,7 @@ python3 mock_data/seed.py
 ```
 
 
-## Querying for Data
+## Querying the API
 
 ### Via Bash
 
