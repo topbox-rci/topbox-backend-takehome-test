@@ -94,3 +94,30 @@ curl localhost:5000/clients
 ### Via Postman
 
 https://www.postman.com/
+
+## Example Responses
+
+Querying `/interactions/<interaction_id>`
+
+Will return the following
+```json
+{
+  "_id": {
+    "$oid": "5f18d12f42262eec0d43567d"
+  },
+  "engagementId": {
+    "$oid": "5f18d12f42262eec0d435583"
+  },
+  "interactionDate": {
+    "$date": 1589630400000
+  },
+  "agentName": "John Ford",
+  "sentiment": "Negative",
+  "custom": {
+    "csvName": "2020_16_05_report.csv",
+    "agentFirstName": "John",
+    "agentLastName": "Ford"
+  }
+}
+```
+NOTE: This is BSON-encoded JSON (as you can see by the `"$date"` and `"$oid"` fields... BSON encoding works fine for this API)
