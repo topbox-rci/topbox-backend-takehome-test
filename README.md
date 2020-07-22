@@ -1,9 +1,18 @@
 # topbox-backend-takehome-test
 
 You can run this code locally or via Docker (see sections below).  
-Please read the entire README before beginning.  
+Please read the entire README before beginning.
+
+If you wish to visualize the database, consider installing MongoDB Compass or Robo 3T
+
+NOTE: You will need to use docker-compose to spin up the Mongo Database
 
 ## Mongo Schema Design
+```
+client
+└── engagement
+    └── interaction
+```
 
 ### Client
 
@@ -26,31 +35,9 @@ The `interaction` collection is where all custom client data is written to. This
   a support phone call for a returned pair of shoes, or a tweet from Twitter.
 
 - engagementId (foreign key: the engagement which the interaction data is associated with)
-- createdAt
-- updatedAt
 - agentName (the agent who made the phone call, the support agent who was in the chat session, etc.)
 - interactionDate (the timestamp for the customer interaction - i.e. when a phone call began, when a tweet was sent)
-- custom (this sub-document is where all original source data is dumped)
-
-## Running Locally
-
-This repo should work with Python 3.6, 3.7, and 3.8
-
-### Install requirements from setup.py
-```
-pip3 install -e .
-```
-
-### Run Locally
-```
-export MONGO_URI=mongodb://admin:adminpass@localhost:27017/production?authSource=admin
-FLASK_APP=app/app.py flask run --port 5001
-```
-
-### Seed Data
-```
-python3 mock_data/seed.py
-```
+- custom (this sub-document is where all original source data is dumped - agent name, csv name, etc.)
 
 ## Run via Docker
 
@@ -73,3 +60,37 @@ docker-compose exec web python3 /web/mock_data/seed.py
 ```.env
 docker-compose down  # tear down stack
 ```
+
+## Running Locally
+
+This repo should work with Python 3.6, 3.7, and 3.8
+
+### Install requirements from setup.py
+```
+pip3 install -e .
+```
+
+### Run Locally
+```
+export MONGO_URI=mongodb://admin:adminpass@localhost:27017/production?authSource=admin
+FLASK_APP=app/app.py flask run --port 5001
+```
+
+### Seed Data
+```
+export MONGO_URI=mongodb://admin:adminpass@localhost:27017/production?authSource=admin
+python3 mock_data/seed.py
+```
+
+
+## Querying for Data
+
+### Via Bash
+
+```
+curl localhost:5000/clients
+```
+
+### Via Postman
+
+https://www.postman.com/
