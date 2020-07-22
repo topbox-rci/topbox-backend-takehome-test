@@ -6,6 +6,8 @@ services:
     build: .
     ports:
       - "5000:5000"
+    environment:
+      MONGO_URI: mongodb://admin:adminpass@mongo:27017/production?authSource=admin
 
   mongo:
     image: mongo:3.6-xenial

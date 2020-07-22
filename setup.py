@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
 
-from app import __version__
-
 setup(
     name='topbox-backend-takehome-test',
-    version=__version__,
+    version='1.0.0',
     description='Backend Take Home Test',
     url='topbox.io',
     install_requires=[
